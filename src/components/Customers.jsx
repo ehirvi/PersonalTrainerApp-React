@@ -38,7 +38,8 @@ const CustomersGrid = (props) => {
                 rowSelection="single"
                 animateRows={true}
                 columnDefs={columns}
-                rowData={props.customers}>
+                rowData={props.customers}
+                pagination={true}>
             </AgGridReact>
         </div>
     )

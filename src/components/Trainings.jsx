@@ -38,7 +38,8 @@ const TrainingsGrid = (props) => {
 				rowSelection='single'
 				animateRows={true}
 				columnDefs={columns}
-				rowData={props.trainings}>
+				rowData={props.trainings}
+				pagination={true}>
 			</AgGridReact>
 		</div>
 	)
