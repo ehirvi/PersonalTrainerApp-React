@@ -31,7 +31,7 @@ const TrainingsGrid = (props) => {
 	]
 
 	return (
-		<div className='ag-theme-material' style={{ height: "100vh", width: "100vw" }}>
+		<div className='ag-theme-material' style={{height: "700px", width: "100%", margin: "auto"}}>
 			<AgGridReact
 				ref={props.gridRef}
 				onGridReady={params => props.gridRef.current = params.api}
