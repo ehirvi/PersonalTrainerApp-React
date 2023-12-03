@@ -21,5 +21,11 @@ const updateOne = (customer) => (
         .then(promise => promise.data)
 )
 
+const deleteOne = (id) => (
+    axios
+        .delete(`${POST_URL}/${id}`)
+        .then(promise => promise.data)
+)
 
-export default { getAll, addOne, updateOne }
+
+export default { getAll, addOne, updateOne, deleteOne }

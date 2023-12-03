@@ -15,7 +15,7 @@ const CustomersGrid = (props) => {
         {
             headerName: "Actions",
             cellRenderer: params =>
-                <Button startIcon={<Delete />}></Button>, width: 120
+                <Button startIcon={<Delete />} onClick={() => props.deleteCustomer(params.data)}></Button>, width: 120
         },
         {
             cellRenderer: params =>
@@ -75,10 +75,16 @@ const Customers = () => {
             .then(res => getCustomerList())
     }
 
+    const deleteCustomer = (customer) => {
+        CustomerService
+            .deleteOne(customer.id)
+            .then(res => getCustomerList())
+    }
+
     return (
         <>
             <AddCustomer newCustomer={newCustomer} />
-            <CustomersGrid customers={customers} gridRef={gridRef} updateCustomer={updateCustomer} />
+            <CustomersGrid customers={customers} gridRef={gridRef} updateCustomer={updateCustomer} deleteCustomer={deleteCustomer} />
         </>
     )
 }
