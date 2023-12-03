@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 import CustomerService from "../services/CustomerService";
 import { AgGridReact } from "ag-grid-react";
-import { Button } from "@mui/material";
+import { Button, Snackbar } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
+import AddTraining from "./AddTraining";
+import TrainingService from "../services/TrainingService";
 
 
 const CustomersGrid = (props) => {
@@ -23,7 +25,7 @@ const CustomersGrid = (props) => {
         },
         {
             cellRenderer: params =>
-                <Button size="small">Add Training</Button>
+                <AddTraining customer={params.data} newTraining={props.newTraining} />
         },
         { headerName: "First Name", field: "firstname", sortable: true, filter: true, floatingFilter: true },
         { headerName: "Last Name", field: "lastname", sortable: true, filter: true, floatingFilter: true },
@@ -52,6 +54,7 @@ const CustomersGrid = (props) => {
 
 const Customers = () => {
     const [customers, setCustomers] = useState([]);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
 
     const gridRef = useRef();
 
@@ -76,15 +79,30 @@ const Customers = () => {
     }
 
     const deleteCustomer = (customer) => {
-        CustomerService
-            .deleteOne(customer.id)
-            .then(res => getCustomerList())
+        if (window.confirm("Are you sure?")) {
+            CustomerService
+                .deleteOne(customer.id)
+                .then(res => {
+                    setSnackbarOpen(true),
+                        getCustomerList()
+                })
+        }
+    }
+
+    const newTraining = (training) => {
+        TrainingService
+            .addOne(training)
     }
 
     return (
         <>
             <AddCustomer newCustomer={newCustomer} />
-            <CustomersGrid customers={customers} gridRef={gridRef} updateCustomer={updateCustomer} deleteCustomer={deleteCustomer} />
+            <CustomersGrid customers={customers} gridRef={gridRef} updateCustomer={updateCustomer} deleteCustomer={deleteCustomer} newTraining={newTraining} />
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={4000}
+                onClose={() => setSnackbarOpen(false)}
+                message={"Deleted Succesfully!"} />
         </>
     )
 }

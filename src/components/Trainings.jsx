@@ -19,7 +19,7 @@ const TrainingsGrid = (props) => {
 		{ headerName: "Activity", field: "activity", sortable: true, filter: true, floatingFilter: true },
 		{
 			headerName: "Date", valueGetter:
-				(params) => dayjs(params.data.date).format("DD.MM.YYYY HH:MM"),
+				(params) => dayjs(params.data.date).format("DD.MM.YYYY HH:mm"),
 			sortable: true, filter: true, floatingFilter: true
 		},
 		{ headerName: "Duration", field: "duration", sortable: true, filter: true, floatingFilter: true },

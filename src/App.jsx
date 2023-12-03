@@ -6,7 +6,6 @@ import { ChevronLeft } from '@mui/icons-material'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import ContactsIcon from '@mui/icons-material/Contacts'
 import './App.css'
-import { grey } from '@mui/material/colors'
 
 
 function App() {
@@ -24,6 +23,7 @@ function App() {
 						<IconButton edge='start' color='inherit' onClick={handleDrawer}>
 							<MenuIcon />
 						</IconButton>
+						<Typography variant='h6'>Personal Trainer App</Typography>
 					</Toolbar>
 				</AppBar>
 				<Drawer
@@ -41,7 +41,7 @@ function App() {
 								<ListItemIcon>
 									<ContactsIcon />
 								</ListItemIcon>
-								<ListItemText primary="Trainings" sx={{color: "black"}}></ListItemText>
+								<ListItemText primary="Trainings" sx={{ color: "black" }}></ListItemText>
 							</ListItemButton>
 						</ListItem>
 
@@ -50,7 +50,7 @@ function App() {
 								<ListItemIcon>
 									<DirectionsRunIcon />
 								</ListItemIcon>
-								<ListItemText primary="Customers" sx={{color: "black"}}></ListItemText>
+								<ListItemText primary="Customers" sx={{ color: "black" }}></ListItemText>
 							</ListItemButton>
 						</ListItem>
 					</List>

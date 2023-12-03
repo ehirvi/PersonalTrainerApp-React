@@ -24,7 +24,7 @@ const updateOne = (customer) => (
 const deleteOne = (id) => (
     axios
         .delete(`${POST_URL}/${id}`)
-        .then(promise => promise.data)
+        .then(promise => promise)
 )
 
 
