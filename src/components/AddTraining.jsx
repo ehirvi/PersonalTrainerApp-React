@@ -45,7 +45,7 @@ const AddTraining = (props) => {
                     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fi">
                         <DateTimePicker label="Date" name="date" onChange={date => setDateTime(date)} />
                     </LocalizationProvider>
-                    <TextField margin="dense" name="duration" value={training.duration} onChange={e => handleInputChange(e)} label="Duration" fullWidth />
+                    <TextField margin="dense" name="duration" value={training.duration} onChange={e => handleInputChange(e)} label="Duration (min)" fullWidth />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => { props.newTraining(training), setDialogueOpen(false), setSnackbarOpen(true) }} color="primary">Save</Button>

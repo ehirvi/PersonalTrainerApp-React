@@ -15,5 +15,11 @@ const addOne = (training) => (
         .then(promise => promise.data)
 )
 
+const deleteOne = (id) => (
+    axios
+        .delete(`${POST_URL}/${id}`)
+        .then(promise => promise)
+)
 
-export default { getAll, addOne }
+
+export default { getAll, addOne, deleteOne }
