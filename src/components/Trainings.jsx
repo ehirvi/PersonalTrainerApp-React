@@ -25,7 +25,7 @@ const TrainingsGrid = (props) => {
 		{ headerName: "Duration", field: "duration", sortable: true, filter: true, floatingFilter: true },
 		{
 			headerName: "Customer", valueGetter:
-				(params) => params.data.customer.firstname + " " + params.data.customer.lastname,
+				(params) => (params.data.customer != null ? params.data.customer.firstname + " " + params.data.customer.lastname : ""),
 			sortable: true, filter: true, floatingFilter: true
 		}
 	]

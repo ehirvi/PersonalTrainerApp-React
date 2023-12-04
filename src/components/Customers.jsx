@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import CustomerService from "../services/CustomerService";
 import { AgGridReact } from "ag-grid-react";
 import { Button, Snackbar } from "@mui/material";
@@ -40,7 +40,7 @@ const CustomersGrid = (props) => {
         <div className="ag-theme-material" style={{ height: "700px", width: "100%", margin: "auto" }}>
             <AgGridReact
                 ref={props.gridRef}
-                onGridReady={params => props.gridRef.current = params.api}
+                onGridReady={params => { props.gridRef.current = params.api }}
                 rowSelection="single"
                 animateRows={true}
                 columnDefs={columns}
@@ -94,9 +94,14 @@ const Customers = () => {
             .addOne(training)
     }
 
+    const exportData = useCallback(() => {
+        gridRef.current.exportDataAsCsv({ fileName: "customers.csv", columnKeys: ["firstname", "lastname", "email", "phone", "streetaddress", "postcode", "city"] })
+    }, [])
+
     return (
         <>
             <AddCustomer newCustomer={newCustomer} />
+            <Button style={{ margin: 10 }} variant="outlined" color="primary" onClick={exportData}>Export as CSV</Button>
             <CustomersGrid customers={customers} gridRef={gridRef} updateCustomer={updateCustomer} deleteCustomer={deleteCustomer} newTraining={newTraining} />
             <Snackbar
                 open={snackbarOpen}
