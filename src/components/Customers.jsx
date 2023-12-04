@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import CustomerService from "../services/CustomerService";
 import { AgGridReact } from "ag-grid-react";
-import { Button, Snackbar } from "@mui/material";
+import { Button, Snackbar, Typography } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
@@ -100,6 +100,7 @@ const Customers = () => {
 
     return (
         <>
+            <Typography variant="h5" textAlign="center">Customers</Typography>
             <AddCustomer newCustomer={newCustomer} />
             <Button style={{ margin: 10 }} variant="outlined" color="primary" onClick={exportData}>Export as CSV</Button>
             <CustomersGrid customers={customers} gridRef={gridRef} updateCustomer={updateCustomer} deleteCustomer={deleteCustomer} newTraining={newTraining} />

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import TrainingService from '../services/TrainingService';
 import { AgGridReact } from 'ag-grid-react';
-import { Button, Snackbar } from '@mui/material';
+import { Button, Snackbar, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
@@ -73,6 +73,7 @@ const Trainings = () => {
 
 	return (
 		<>
+		<Typography variant="h5" textAlign="center">Trainings</Typography>
 			<TrainingsGrid trainings={trainings} gridRef={gridRef} deleteTraining={deleteTraining} />
 			<Snackbar
 				open={snackbarOpen}

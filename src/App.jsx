@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import { ChevronLeft } from '@mui/icons-material'
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
 import ContactsIcon from '@mui/icons-material/Contacts'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import './App.css'
 
 
@@ -51,6 +52,15 @@ function App() {
 									<DirectionsRunIcon />
 								</ListItemIcon>
 								<ListItemText primary="Customers" sx={{ color: "black" }}></ListItemText>
+							</ListItemButton>
+						</ListItem>
+
+						<ListItem component={Link} to={"/calendar"} disableGutters disablePadding>
+							<ListItemButton>
+								<ListItemIcon>
+									<CalendarMonthIcon/>
+								</ListItemIcon>
+								<ListItemText primary="Calendar" sx={{ color: "black" }}></ListItemText>
 							</ListItemButton>
 						</ListItem>
 					</List>
